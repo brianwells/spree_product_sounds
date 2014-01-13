@@ -1,0 +1,3 @@
+<%= content_tag :li, class: ('active' if current == 'Sounds') do %>
+  <%= link_to_with_icon 'icon-volume-up', Spree.t(:sounds) ,admin_product_sounds_url(@product) %>
+<% end if can?(:admin, Spree::Sound) %>

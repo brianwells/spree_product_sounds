@@ -1,0 +1,21 @@
+
+$(function(){
+
+	$(".audio").mb_miniPlayer({
+	                width:200,
+	                inLine:false,
+	                id3:false,
+	                downloadPage:null,
+	                swfPath:"<%= asset_path 'miniAudioPlayer/Jplayer.swf' %>",
+	                addShadow:false, 
+	                inLine:true, 
+	                autoPlay:false, 
+	                playAlone:true, 
+	                volume:1, 
+	                showVolumeLevel:false, 
+	                showRew:false, 
+	                showTime:false,
+	                downloadable:false,
+	                animate:false
+	            });
+});

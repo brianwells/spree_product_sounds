@@ -1,5 +1,9 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  spree:
+    new_sound: "New Sound"
+    no_sounds_found: "No Sounds Found"
+    sound_name: "Name"
+    sound_description: "Description"
+    sound_player: "Player"
+    back_to_sounds_list: "Back to Sounds List"
+    product_sounds: "Sample Clips"

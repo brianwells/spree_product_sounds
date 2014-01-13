@@ -1,0 +1,19 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => { :current => 'Sounds' } %>
+
+<%= form_for [:admin, @product, @sound], :html => { :multipart => true } do |f| %>
+  <fieldset data-hook="new_sound">
+    <legend align="center"><%= Spree.t(:new_sound) %></legend>
+
+      <%= render :partial => 'form', :locals => { :f => f } %>
+    
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'icon-refresh' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= link_to_with_icon 'icon-remove', Spree.t('actions.cancel'), admin_product_sounds_url(@product), :id => 'cancel_link', :class => 'button' %>
+      </div>
+  </fieldset>
+<% end %>
+
+<%= javascript_include_tag 'admin/sounds/new.js' %>

@@ -1,0 +1,28 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => { :current => 'Sounds' } %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @sound } %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_sounds_list), admin_product_sounds_url(@product), :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<%= form_for [:admin, @product, @sound], :html => { :multipart => true } do |f| %>
+  <fieldset data-hook="edit_sound">
+    <legend align="center"><%= @sound.attachment_file_name%></legend>
+    <div data-hook="player" class="field alpha two columns">
+      <%= f.label Spree.t(:sound_player) %><br>
+      <%= insert_product_sound(@sound, style: :mp3, width: 0) %>
+    </div>
+    <div class="ten columns omega">
+      <%= render :partial => 'form', :locals => { :f => f } %>  
+    </div>
+    <div class="clear"></div>
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+      <%= button Spree.t('actions.update'), 'icon-refresh' %>
+      <span class="or"><%= Spree.t(:or) %></span>
+      <%= link_to Spree.t('actions.cancel'), admin_product_sounds_url(@product), :id => 'cancel_link', :class => 'button icon-remove' %>
+    </div>
+  </fieldset>
+<% end %>
