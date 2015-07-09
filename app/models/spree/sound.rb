@@ -27,7 +27,17 @@ module Spree
 
     def skip_invalid_audio
     	# TODO: check file to make sure it has audio that ffmpeg can access
-    	true
+      file_path = attachment.queued_for_write[:original].path
+      file_info = JSON.parse(`ffprobe -v error #{file_path} -print_format json -show_streams`)
+      return false if file_info["streams"].nil? || !file_info["streams"].is_a?(Array)
+      file_info["streams"].each do |stream|
+        if stream["codec_type"] == "audio"
+          self.original_bitrate = stream["bit_rate"]
+          self.original_samplerate = stream["sample_rate"]
+          return true 
+        end
+      end
+    	false
     end
 	end
 end
