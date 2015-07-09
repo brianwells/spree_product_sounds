@@ -5,7 +5,7 @@ module Spree
 
 	has_attached_file :attachment,
                       styles: { 
-                         mp3: { format: :mp3, bitrate: "192K", samplerate: 44100 }, 
+                         original: { format: :mp3, bitrate: "192K", samplerate: 44100 }, 
                       },
                       processors: [:audio_convert],
 											url: "/spree/sounds/:id/:style/:basename.:extension",

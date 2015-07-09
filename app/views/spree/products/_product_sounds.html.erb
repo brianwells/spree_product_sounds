@@ -3,12 +3,12 @@
   <div id="product-sounds" data-hook>
     <h6 class="product-section-title"><%= Spree.t(:product_sounds) %></h6>
     <% @product.sounds.each do |sound| %>
-  	  <div><%= insert_product_sound(sound, style: :mp3, width: 270) %></div>
+  	  <div><%= insert_product_sound(sound, width: 270) %></div>
   	<% end %>
   	<% if @product.has_variants? %>
   		<% @product.variant_sounds.each do |sound| %>
   			<% next if @product.sounds.include?(sound) %>
-   	  	<div><%= insert_product_sound(sound, style: :mp3) %></div>
+   	  	<div><%= insert_product_sound(sound) %></div>
   		<% end %>
   	<% end %>
   </div>

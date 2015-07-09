@@ -46,7 +46,7 @@
           <% if @product.has_variants? %>
             <td><%= options_text_for(sound) %></td>
           <% end %>
-          <td><%= insert_product_sound(sound, style: :mp3, width: 180) %></td>
+          <td><%= insert_product_sound(sound, width: 180) %></td>
           <td class="actions">
             <%= link_to_with_icon 'edit', Spree.t(:edit), edit_admin_product_sound_url(@product, sound), :no_text => true, :data => {:action => 'edit'} %>
             <%= link_to_delete sound, { :url => admin_product_sound_url(@product, sound), :no_text => true } %>
