@@ -13,7 +13,7 @@ module Paperclip
 
     def initialize file, options = {}, attachment = nil
     	super
-    	@parameters = ["-vn", "-y"]
+    	@parameters = ["-vn", "-y", "-v", "error"]
     	@format = @options[:format].to_s
     	if @format.empty?
     		# default to mp3 format
