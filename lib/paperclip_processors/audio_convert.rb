@@ -30,11 +30,31 @@ module Paperclip
 
       case @codec
       when "libmp3lame"
-     		@bitrate ||= "192k"
+     		@bitrate ||= 192000
       when "libvorbis"
       	# no defaults for now
       when "aac"
       	@parameters << "-strict" << "experimental"
+      end
+
+      unless @bitrate.nil?
+        original_bitrate = attachment.instance.original_bitrate ||= @bitrate
+        case @options[:bitrate_adjust].to_s
+        when "highest"
+          @bitrate = [@bitrate, original_bitrate.to_i].max
+        when "lowest"
+          @bitrate = [@bitrate, original_bitrate.to_i].min
+        end
+      end
+
+      unless @samplerate.nil?
+        original_samplerate = attachment.instance.original_samplerate ||= @samplerate
+        case @options[:samplerate_adjust].to_s
+        when "highest"
+          @samplerate = [@samplerate, original_samplerate.to_i].max
+        when "lowest"
+          @samplerate = [@samplerate, original_samplerate.to_i].min
+        end
       end
 
       @basename = File.basename(@file.path, File.extname(@file.path))

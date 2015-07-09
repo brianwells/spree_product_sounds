@@ -3,9 +3,10 @@ module Spree
 
     validate :no_attachment_errors
 
-	has_attached_file :attachment,
+	  has_attached_file :attachment,
                       styles: { 
-                         original: { format: :mp3, bitrate: "192K", samplerate: 44100 }, 
+                         original: { format: :mp3, bitrate: 192000, samplerate: 44100, 
+                                     bitrate_adjust: :lowest, samplerate_adjust: :lowest }, 
                       },
                       processors: [:audio_convert],
 											url: "/spree/sounds/:id/:style/:basename.:extension",
@@ -15,6 +16,8 @@ module Spree
                          :content_type => { :content_type => /\Aaudio/ }
 
 		before_post_process :skip_invalid_audio
+
+    attr_accessor :original_bitrate, :original_samplerate
 
     def no_attachment_errors
     	unless attachment.errors.empty?
