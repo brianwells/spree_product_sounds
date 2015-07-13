@@ -13,7 +13,7 @@
     <legend align="center"><%= @sound.attachment_file_name%></legend>
     <div data-hook="player" class="field alpha two columns">
       <%= f.label Spree.t(:sound_player) %><br>
-      <%= insert_product_sound(@sound, style: :mp3, width: 0) %>
+      <%= insert_product_sound(@sound, width: 0) %>
     </div>
     <div class="ten columns omega">
       <%= render :partial => 'form', :locals => { :f => f } %>  
